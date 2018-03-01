@@ -25,3 +25,5 @@ def find_median_sorted_arrays(nums1, nums2)
         return (merged[mid-1] + merged[mid]).to_f / 2
     end
 end
+
+# THIS IS THE WRONG TIME COMPLEXITY ^^^
