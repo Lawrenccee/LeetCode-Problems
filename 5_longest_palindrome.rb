@@ -63,52 +63,67 @@
 # initialize 2D array P(i,i) set to true and S(i,i+1) = true if Si == Si+1
 
 # TIME LIMIT EXCEEDED BUT O(n^2)???
-def longest_palindrome(s)
-  results = Array.new(s.length) { Array.new(s.length) }
-  longest = [0, 0]
+# def longest_palindrome(s)
+#   results = Array.new(s.length) { Array.new(s.length) }
+#   longest = [0, 0]
 
-  s.each_char.with_index do |char, idx|
-    results[idx][idx] = true
-    if char == s[idx+1]
-      results[idx][idx+1] = true
-    end
-  end
+#   s.each_char.with_index do |char, idx|
+#     results[idx][idx] = true
+#     if char == s[idx+1]
+#       results[idx][idx+1] = true
+#     end
+#   end
 
-  (0...results.length).each do |idx1|
-    (0...results[idx1].length).each do |idx2|
-      if results[idx1][idx2] || (results[idx1-1] && results[idx1-1][idx2+1] && s[idx1] == s[idx2])
-        results[idx1][idx2] = true 
-      else 
-        results[idx1][idx2] = false
-      end 
-    end
-  end
+#   (0...results.length).each do |idx1|
+#     (0...results[idx1].length).each do |idx2|
+#       if results[idx1][idx2] || (results[idx1-1] && results[idx1-1][idx2+1] && s[idx1] == s[idx2])
+#         results[idx1][idx2] = true 
+#       else 
+#         results[idx1][idx2] = false
+#       end 
+#     end
+#   end
 
-  (results[0].length-1).downto(0).each do |idx1|
-    (0...results[idx1].length).each do |idx2|
-      if results[idx1][idx2] && s[idx2..idx1].length > (longest.last-longest.first)
-        longest = [[idx1, idx2].min, [idx1, idx2].max]
-      end
-    end
-  end
+#   (results[0].length-1).downto(0).each do |idx1|
+#     (0...results[idx1].length).each do |idx2|
+#       if results[idx1][idx2] && s[idx2..idx1].length > (longest.last-longest.first)
+#         longest = [[idx1, idx2].min, [idx1, idx2].max]
+#       end
+#     end
+#   end
 
-  return s[longest.first..longest.last]
-end
+#   return s[longest.first..longest.last]
+# end
 
 # EXPANDING WINDOW SOLUTION ACCEPTED
 def longest_palindrome(s)
+  longest = [0, 0]
+
   s.each_char.with_index do |char, idx|
     if_mid_len = palindrome_around_index(s, idx, idx)
     not_mid_len = palindrome_around_index(s, idx, idx + 1)
+
+    larger = s[if_mid_len.first..if_mid_len.last].length > 
+    s[not_mid_len.first..not_mid_len.last].length ? if_mid_len :
+    not_mid_len
+
+    if ((larger.last - larger.first) > (longest.last - longest.first))
+      longest = larger
+    end
   end
+
+  s[longest.first..longest.last]
 end
 
 private
 def palindrome_around_index(s, left, right)
-end
+  until left < 0 || right > s.length || s[left] != s[right]
+    left -= 1
+    right += 1
+  end
 
-# HOW TO DO THREESUM
-# LOOK AT ALL PAIRS AND THEIR COMPLEMENT
+  return [left + 1, right - 1]
+end
 
 # public String longestPalindrome(String s) {
 #     int start = 0, end = 0;
