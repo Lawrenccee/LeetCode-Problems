@@ -55,3 +55,15 @@ end
 # fast = 3, 2, 4
 
 # done
+
+# [1, 4, 4, 5, 6, 2, 3]
+
+# slow = 1, 4, 6, 3, 5, 2
+# fast = 1, 4 6, 3 5, 2 4, 6 3, 5 2
+
+# slow = 2, 4
+# fast = 1, 4
+
+# done
+
+# get in the cycle, then find the entry of the cycle
