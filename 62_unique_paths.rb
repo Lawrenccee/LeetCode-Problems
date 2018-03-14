@@ -14,3 +14,4 @@ def factorial(num)
 end
 
 # run time m+n?
+# dynamic programming might be better?
