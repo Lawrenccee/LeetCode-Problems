@@ -1,20 +1,21 @@
 # @param {Integer} n
 # @return {String[]}
 def generate_parenthesis(n)
-  # parenthesis can either be ()string, string() or wrap around current string (string)
+  result = []
   
-  result = [""]
+  result = generate("", 0, 0, n, result)
+end
 
-  n.times do
-    arr = []
-    result.each do |str|
-      arr << "#{str}()"
-      arr << "()#{str}"
-      arr << "(#{str})"
-    end
-
-    result = arr
+def generate(string, left, right, n, result)
+  if string.length == 2*n
+    result << string
   end
-
-  result.uniq
+  if left < n
+    generate(string + "(", left+1, right, n, result)
+  end
+  if right < left
+    generate(string + ")", left, right+1, n, result)
+  end
+    
+  result
 end
