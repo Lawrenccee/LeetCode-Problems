@@ -14,3 +14,21 @@ def first_uniq_char(s)
   
   -1
 end
+
+# Below looks cleaner btw
+
+# @param {String} s
+# @return {Integer}
+# def first_uniq_char(s)
+#   counts = Hash.new(0)
+  
+#   s.each_char do |char|
+#     counts[char] += 1
+#   end
+  
+#   s.each_char.with_index do |char, idx|
+#     return idx if counts[char] == 1
+#   end
+  
+#   -1
+# end
