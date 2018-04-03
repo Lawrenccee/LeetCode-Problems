@@ -35,5 +35,3 @@ def generate_trees_helper(beg, fin)
 
   result
 end
-
-p generate_trees(2)
