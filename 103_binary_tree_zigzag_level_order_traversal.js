@@ -16,7 +16,7 @@ var zigzagLevelOrder = function (root) {
 
   let result = [];
   let subArr = [root.val];
-  let lastRow = [root]
+  let lastRow = [root];
   let flip = true;
 
   while (lastRow.length > 0) {
