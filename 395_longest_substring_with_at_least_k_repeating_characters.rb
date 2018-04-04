@@ -37,3 +37,23 @@ def longest_substring(s, k)
   max = [longest_substring(s[0...index], k), longest_substring(s[(index+1)..-1], k)].max
   
 end
+
+#CLOSE
+# @param {String} s
+# @param {Integer} k
+# @return {Integer}
+# def longest_substring(s, k)
+#   counts = Hash.new(0)
+  
+#   s.each_char do |char|
+#     counts[char] += 1
+#   end
+    
+#   counts.each do |key, val|
+#     if val < k
+#       return s.split(key).map { |sub| longest_substring(sub, k) }.max
+#     end
+#   end
+  
+#   s.length
+# end
