@@ -24,6 +24,7 @@ def longest_substring(s, k)
   
   counts.each do |key, val|
     if val < k
+      # Here why not split by the character instead then call max on all of them in the substr method
       s.each_char.with_index do |char, idx|
         if key == char
           index = idx
