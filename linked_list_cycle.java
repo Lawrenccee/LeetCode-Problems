@@ -9,7 +9,7 @@ class ListNode {
 }
 
 public class linked_list_cycle {  
-  public static boolean hasCycle(ListNode head) {
+  public boolean hasCycle(ListNode head) {
     ListNode slow = head;
     ListNode fast = head;
     
@@ -34,6 +34,6 @@ public class linked_list_cycle {
     next.next = last;
     last.next = next;
 
-    System.out.println(hasCycle(head));
+    System.out.println(new linked_list_cycle().hasCycle(head));
   }
 }
