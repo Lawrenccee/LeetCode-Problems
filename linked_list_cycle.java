@@ -27,6 +27,22 @@ class Solution {
 }
 
 public class linked_list_cycle {  
+  boolean hasCycle(ListNode head) {
+    ListNode slow = head;
+    ListNode fast = head;
+
+    while (fast != null && fast.next != null) {
+      fast = fast.next.next;
+      slow = slow.next;
+
+      if (fast == slow) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   public static void main(String[] args) {
     ListNode head = new ListNode(1);
     ListNode next = new ListNode(2);
@@ -36,6 +52,6 @@ public class linked_list_cycle {
     next.next = last;
     last.next = next;
 
-    System.out.println(new Solution().hasCycle(head));
+    System.out.println(new linked_list_cycle().hasCycle(head));
   }
 }
