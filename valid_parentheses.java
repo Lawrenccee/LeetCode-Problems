@@ -1,4 +1,4 @@
-import java.util.Stack;
+import data_structures.Stack;
 import java.util.HashMap;
 
 class valid_parentheses {
