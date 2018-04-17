@@ -25,4 +25,10 @@ class valid_parentheses {
 
     return stack.empty();
   }
+
+  public static void main(String[] args) {
+    String s = "(){[]}";
+
+    System.out.println(new valid_parentheses().isValid(s));
+  }
 }
