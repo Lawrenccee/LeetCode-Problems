@@ -1,4 +1,4 @@
-import data_structures.Stack;
+import data_structures.StackQueue;
 import java.util.HashMap;
 
 class valid_parentheses {
@@ -8,7 +8,7 @@ class valid_parentheses {
     mapping.put("]", "[");
     mapping.put("}", "{");
 
-    Stack<String> stack = new Stack<String>();
+    StackQueue<String> stack = new StackQueue<String>();
 
     for (int i = 0; i < s.length(); i++) {
       String curr = s.substring(i, i + 1);
