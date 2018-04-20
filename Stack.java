@@ -30,7 +30,9 @@ public class Stack<Item> {
 
   public Item pop() {
     if (stack.length > 0) {
-      return this.stack[this.top--];
+      Item temp = this.stack[this.top];
+      this.stack[this.top--] = null;
+      return temp;
     } else {
       return null;
     }
