@@ -29,5 +29,5 @@ function numsSquaresHelper(n, cache) {
     num++;
   }
 
-  return cache[n]
+  return cache[n];
 }
